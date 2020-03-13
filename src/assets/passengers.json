@@ -1,0 +1,27 @@
+{
+  "passengers":[
+    {
+      "id": 1,
+      "name": "Anton",
+      "checked": true,
+      "checkedInDate": 1476002020000,
+      "children": [
+        {
+          "name": "Steve"
+        },
+        {
+          "name": "Maria"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Ilya",
+      "checked": false,
+      "checkedInDate": null,
+      "children": null
+    }
+  ]
+}
+
+

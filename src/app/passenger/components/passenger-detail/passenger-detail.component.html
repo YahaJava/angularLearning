@@ -1,0 +1,30 @@
+<span class="status" [class.checked-in]="detail.checked"></span>
+<div *ngIf="!editing">name: {{ detail.name }}</div>
+<div *ngIf="editing">
+  <input type="text" [value]="detail.name" [(ngModel)]="detail.name" />
+</div>
+<div>
+<button (click)="toggleEdit()">{{ editing ? 'Done' : 'Edit' }}</button>
+<button (click)="onRemove()">Remove</button>
+</div>
+<div>Checked date: {{ detail.checkedInDate | date: 'yyyy MMMM dd' }}</div>
+<div>
+  Children({{ detail.children?.length || 0 }})
+  <ul>
+    <li *ngFor="let child of detail.children">
+      {{ child.name }}
+    </li>
+  </ul>
+</div>
+<!--  Another way
+  <li *ngFor="let passenger of passengers; let i = index">
+    <span class="status" [ngClass]="{'checked-in':passenger.checked,'checked-out':!passenger.checked}"></span>
+     {{i}}. name: {{passenger.name}}
+  </li>-->
+<!--  with style
+<li *ngFor="let passenger of passengers; let i = index">
+  <span class="status" [style.background]="passenger.checked ? 'green': 'red'"></span> {{i}}. name: {{passenger.name}}
+</li>
+<li *ngFor="let passenger of passengers; let i = index">
+  <span class="status" [ngStyle]="{background:passenger.checked ? 'green': 'red'}"></span> {{i}}. name: {{passenger.name}}
+</li>-->
