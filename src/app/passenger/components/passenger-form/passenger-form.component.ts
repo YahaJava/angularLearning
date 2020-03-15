@@ -9,9 +9,17 @@ import {Passenger} from '../../models/passenger.interface';
 export class PassengerFormComponent implements OnInit {
   @Input()
   detail: Passenger;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
+  toggleCheck(event: any) {
+    if (this.detail.checked) {
+      this.detail.checkedInDate = Date.now();
+    }
+    this.detail.checked = !this.detail.checked;
+  }
 }

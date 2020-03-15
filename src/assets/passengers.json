@@ -12,14 +12,26 @@
         {
           "name": "Maria"
         }
-      ]
+      ],
+      "baggage": ""
     },
     {
       "id": 2,
       "name": "Ilya",
       "checked": false,
       "checkedInDate": null,
-      "children": null
+      "children": null,
+      "baggage": [{
+        "key": "none",
+        "value": "no baggage"
+      },{
+        "key": "hand",
+        "value": "hand baggage"
+      },{
+        "key": "big",
+        "value": "big baggage"
+      }
+      ]
     }
   ]
 }
