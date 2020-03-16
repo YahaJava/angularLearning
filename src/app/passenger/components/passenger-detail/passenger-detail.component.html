@@ -3,10 +3,6 @@
 <div *ngIf="editing">
   <input type="text" [value]="detail.name" [(ngModel)]="detail.name" />
 </div>
-<div>
-<button (click)="toggleEdit()">{{ editing ? 'Done' : 'Edit' }}</button>
-<button (click)="onRemove()">Remove</button>
-</div>
 <div>Checked date: {{ detail.checkedInDate | date: 'yyyy MMMM dd' }}</div>
 <div>
   Children({{ detail.children?.length || 0 }})
@@ -15,6 +11,11 @@
       {{ child.name }}
     </li>
   </ul>
+</div>
+<div>
+  <button (click)="toggleEdit()">{{ editing ? 'Done' : 'Edit' }}</button>
+  <button (click)="onRemove()">Remove</button>
+  <button (click)="goToPassenger()">View</button>
 </div>
 <!--  Another way
   <li *ngFor="let passenger of passengers; let i = index">

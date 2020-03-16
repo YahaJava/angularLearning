@@ -1,1 +1,4 @@
-<app-passenger-form [detail]="passenger"></app-passenger-form>
+<button (click)="goBack()">
+  Back
+</button>
+<app-passenger-form [detail]="passenger" (update)="onUpdatePassenger($event)"></app-passenger-form>

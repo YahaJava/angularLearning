@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Passenger} from '../../models/passenger.interface';
 import {PassengerService} from '../../passenger.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-passenger',
@@ -10,7 +11,9 @@ import {PassengerService} from '../../passenger.service';
 export class PassengerComponent implements OnInit {
   passengers: Passenger[];
 
-  constructor(private passengerService: PassengerService) {}
+  constructor(private passengerService: PassengerService,
+              private router: Router
+  ) {}
   ngOnInit(): void {
     this.passengerService
       .getPassengers()
@@ -37,5 +40,9 @@ export class PassengerComponent implements OnInit {
           return passenger.id !== event.id;
         });
       });
+  }
+
+  handleView(event: Passenger) {
+    this.router.navigate(['/passengers', event.id]);
   }
 }

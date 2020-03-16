@@ -16,7 +16,7 @@ export class PassengerService {
   }
   updatePassenger(passenger: Passenger) {
     return this.http
-      .get(`${PASSENGER_API}/${passenger.id}`)
+      .put(`${PASSENGER_API}/${passenger.id}`, passenger)
       .pipe(map((response: any) => response.json()));
   }
 

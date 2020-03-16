@@ -1,28 +1,52 @@
 import {Component} from '@angular/core';
 
+interface Nav {
+  link: string;
+  name: string;
+  exact: boolean;
+}
+
 @Component({
   selector: 'app-root',
   styleUrls: ['app.component.scss'],
   template: `
-    <h1 [style.color]="color" [innerHTML]="title"></h1>
-    <div>
-      {{ message }}
+    <div class="app">
+      <nav class="nav">
+        <a
+          *ngFor="let item of nav"
+          [routerLink]="item.link"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: item.exact}"
+          >{{ item.name }}</a
+        >
+        <router-outlet></router-outlet>
+      </nav>
     </div>
-    <input type="text" [ngModel]="name" (ngModelChange)="change($event)" />
-    <input type="text" [(ngModel)]="name" />
-    <input type="submit" (blur)="focus()" (click)="click()" value="ok" /><br />
-    <div *ngIf="name.length > 1">
-      {{ name }}
-    </div>
-    <br /><br />
-    <app-passenger></app-passenger>
-  `,
+  `
 })
 export class AppComponent {
   title: string;
   message: string;
   name: string;
   color: string;
+
+  nav: Nav[] = [
+    {
+      link: '/',
+      name: 'Home',
+      exact: true
+    },
+    {
+      link: '/error',
+      name: 'error 404',
+      exact: false
+    },
+    {
+      link: '/passengers',
+      name: 'Passengers',
+      exact: false
+    }
+  ];
 
   constructor() {
     this.title = 'angular';
